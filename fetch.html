@@ -15,18 +15,11 @@
         </ul>
     </nav>
 
-    <h1>Отримання постів</h1>
-
-    <!-- Кнопка для отримання постів -->
     <button id="fetchPostsBtn">Отримати пости</button>
 
-    <!-- Індикатор завантаження -->
     <div id="loading" style="display:none;">Завантаження...</div>
-
-    <!-- Список постів -->
     <ul id="postsList"></ul>
 
-    <!-- Детальний перегляд поста -->
     <div id="postDetails" style="display:none;">
         <h2>Деталі поста</h2>
         <p id="postTitle"></p>
@@ -34,7 +27,6 @@
     </div>
 
     <script>
-        // Отримання постів з API
         document.getElementById('fetchPostsBtn').addEventListener('click', function() {
             const postsList = document.getElementById('postsList');
             const loadingIndicator = document.getElementById('loading');
@@ -42,14 +34,10 @@
             const postTitle = document.getElementById('postTitle');
             const postBody = document.getElementById('postBody');
 
-            // Показуємо індикатор завантаження
             loadingIndicator.style.display = 'block';
 
-            // Очищаємо старий список постів і деталі
             postsList.innerHTML = '';
             postDetails.style.display = 'none';
-
-            // Використовуємо fetch для отримання даних
             fetch('https://jsonplaceholder.typicode.com/posts')
                 .then(response => {
                     if (!response.ok) {
@@ -58,15 +46,11 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Приховуємо індикатор завантаження
                     loadingIndicator.style.display = 'none';
-
-                    // Виводимо заголовки постів у список
                     data.forEach(post => {
                         const listItem = document.createElement('li');
                         listItem.textContent = post.title;
                         listItem.addEventListener('click', () => {
-                            // Показуємо деталі поста
                             postTitle.textContent = post.title;
                             postBody.textContent = post.body;
                             postDetails.style.display = 'block';
@@ -75,7 +59,6 @@
                     });
                 })
                 .catch(error => {
-                    // Приховуємо індикатор завантаження і виводимо помилку
                     loadingIndicator.style.display = 'none';
                     alert('Помилка: ' + error.message);
                 });
