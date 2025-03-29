@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проміс</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="promise.html">Робота з Promise</a></li>
+            <li><a href="fetch.html">Отримання даних з API</a></li>
+        </ul>
+    </nav>
+    <script>function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    wait(3000).then(() => console.log("Час вийшов!"));</script>
+</body>
+</html>
